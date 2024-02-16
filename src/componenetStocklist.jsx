@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BsCaretDownFill } from "react-icons/bs";
+import { BsCaretUpFill } from "react-icons/bs";
 
 const Stocklist = () => {
   const [data, setData] = useState([]);
@@ -65,8 +67,8 @@ const Stocklist = () => {
             <tr className='table-row' key={index}>
               <th scope='row'>{stockData.name}</th>
               <td>{stockData.last}</td>
-              <td>{stockData.change}</td>
-              <td>{stockData.changePercent}</td>
+              <td className={stockData.change > 0 ? 'text-success' : 'text-danger'}>{stockData.change} {stockData.change > 0 ? <BsCaretUpFill /> : <BsCaretDownFill />}</td>
+              <td className={stockData.changePercent > 0 ? 'text-success' : 'text-danger'}>{stockData.changePercent} {stockData.changePercent > 0 ? <BsCaretUpFill /> : <BsCaretDownFill />}</td>
               <td>{stockData.high}</td>
               <td>{stockData.low}</td>
               <td>{stockData.open}</td>
